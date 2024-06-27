@@ -1,0 +1,13 @@
+rpi.gpio
+lightdm
+openbox
+network-manager
+python3-flask
+python3-numpy
+python3-requests
+python3-gpiozero
+python3-gunicorn
+python3-pip
+midori
+unclutter
+gunicorn3
