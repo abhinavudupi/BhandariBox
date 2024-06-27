@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;   
+            align-items: center;         
+	    height: 100vh;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+            font-size: 30px;
+        }
+        h2 {
+            color: #333;
+            font-size: 20px;
+        }
+	.image-container {
+            border: 2px solid black;
+            padding: 1px;
+            border-radius: 5px;
+        }
+        img {
+            display: block;
+            max-width: 100%;
+            height: 600px;
+            margin: 0 auto;
+        }
+    </style>
+    <title>Home</title>
+</head>
+<body>
+    <div class="image-container" >
+        <img src="/static/home.jpg" alt="Your Image at /static/home.jpg">
+    </div>
+    <script>
+        function pollAPI() {
+            fetch('/api/check/contribution')
+                .then(response => response.json())
+                .then(data => {
+		    if (data === 1) {
+                        window.location.href = '/bless/1';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        }
+        setInterval(pollAPI, 500);
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Om Shanti</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+	    flex-direction: column;
+            justify-content: center;
+            text-align: centre;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .image-container {
+            border: 2px solid black;
+            padding: 1px;
+            border-radius: 5px;
+        }
+        img {
+            display: block;
+            max-width: 100%;
+            height: 600px;
+            margin: 0 auto;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container" >
+        <img src="{{imgpath}}" alt="Your Image at {{imgpath}}" onclick="redirectToHome()">
+    </div>
+    <script>
+        function redirectToHome() {
+            window.location.href = '/';
+        }
+        const t = setTimeout(redirectToHome, 25000);
+
+        function pollAPI() {
+            fetch('/api/check/button')
+                .then(response => response.json())
+                .then(data => {
+		    if (data === 2) {
+			if ("{{lang}}" != "2") {
+                        window.location.href = '/bless/2?curimg={{imgpath}}';
+			}
+                    }
+		    if (data === 3) {
+			if ("{{lang}}" != "3") {
+                        window.location.href = '/bless/3?curimg={{imgpath}}';
+			}
+                    }
+ 		    if (data === 4) {
+			if ("{{lang}}" != "4") {
+                        window.location.href = '/bless/4?curimg={{imgpath}}';
+			}
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        }
+	function pollAPI2() {
+            fetch('/api/check/contribution')
+                .then(response => response.json())
+                .then(data => {
+		    if (data === 1) {
+                        window.location.href = '/bless/1';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        }
+        setInterval(pollAPI2, 510);
+        setInterval(pollAPI, 500);
+ 
+    </script>
+</body>
+</html>
