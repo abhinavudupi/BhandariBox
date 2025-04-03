@@ -1,4 +1,5 @@
 wget https://github.com/abhinavudupi/BhandariBox/archive/refs/heads/main.zip
+unzip main.zip
 mv BhandariBox-main/ ContribWebUI/
 rm main.zip
 cd ContribWebUI
