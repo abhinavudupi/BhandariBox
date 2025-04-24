@@ -17,6 +17,6 @@ python3 powerInMyHands.py &
 
 echo "Starting application"
 python3 main.py &
-unclutter &
+# unclutter &
 (sleep 30 && python3 mouse_off.py) &
-sleep 3 && midori -e fullscreen http://0.0.0.0:8080/ 
+sleep 3 && midori --execute=fullscreen http://localhost:8080/ 
