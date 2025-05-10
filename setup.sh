@@ -29,6 +29,16 @@ sed -i -e '$i \su -c '"'"''"$mv"'/run.sh &'"'"' '"$un"' ' /etc/rc.local
 echo "execute 'sudo raspi-config' and disable screen blanking and enable auto login to desktop"
 echo "Application has been setup and will start on reboot"
 
+echo "Do you want to continuewith Access Point setup? (y/n)"
+read -r answer
+
+if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
+    echo "Continuing ..."
+else
+    echo "Exiting without accesspoint setup."
+    exit 1
+fi
+
 echo "Setting up Access Point with SSID : $1 and Key : $2"
 systemctl enable NetworkManager
 service NetworkManager start
