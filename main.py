@@ -1,10 +1,8 @@
 from flask import Flask, render_template, request, redirect
-from flaskwebgui import FlaskUI
 import os
 from gpiozero import LED, DigitalInputDevice, Button
 import sqlite3
 from application import load_blessings
-from waitress import serve
 
 contrib_flag=False
 btn1_flag=False
