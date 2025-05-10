@@ -14,7 +14,7 @@ apt-get update
 
 echo "currently in $(pwd)"
 mv=$(pwd)
-un=$(basename "$(dirname "$(dirname "$(pwd)")")")
+un=$(basename "$(dirname "$(pwd)")")
 printf "[APPLICATION]\nApplicationDirectory =" > app.conf
 sed -i -r "s#^(ApplicationDirectory =).*#\1 $mv#" app.conf
 
